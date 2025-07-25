@@ -9,8 +9,10 @@ import { FaUniversity } from "react-icons/fa";
 import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
 import emailjs from "@emailjs/browser";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "axios";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -29,6 +31,9 @@ import {
   SiAdobephotoshop,
   SiAdobeillustrator,
 } from "react-icons/si";
+import figmalogo from "../assets/figmalogo.svg";
+
+import MyGallery from "../components/MyGallery";
 
 const Home = () => {
   const skillCategories = [
@@ -48,6 +53,11 @@ const Home = () => {
       icon: <SiAdobeillustrator />,
       label: "Illustrator",
       color: "text-orange-400",
+    },
+    {
+      icon: <img src={figmalogo} className="w-20 h-10" alt="Figma" />,
+      label: "Figma",
+      color: "",
     },
   ];
 
@@ -88,6 +98,23 @@ const Home = () => {
       .finally(() => setIsSending(false));
   };
 
+  const location = useLocation();
+
+  useEffect(() => {
+    const logVisit = async () => {
+      try {
+        await axios.post("http://localhost:5000/api/users/log-visit", {
+          oath: window.location.pathname,
+          userAgent: navigator.userAgent,
+        });
+        console.log("Visit logged successfully");
+      } catch (err) {
+        console.error("Logging failed:", err.message);
+      }
+    };
+    logVisit();
+  }, []);
+
   return (
     <div>
       {/* Home Section */}
@@ -118,7 +145,7 @@ const Home = () => {
           </h1>
 
           <span className="p-5 font-regular text-gray-700 dark:text-gray-300 text-[13px] sm:text-[17px] md:text-[14px] lg:text-[28px] xl:text-[18px]">
-            A Front-End Web Developer based in the <br />
+            I am Graphic Designer and aspiring Front-End developer <br />
             Philippines, I will help you create your website.
           </span>
 
@@ -143,10 +170,14 @@ const Home = () => {
 
       {/* END OF HOME SECTION */}
 
+      {/* Gallery Section */}
+      <MyGallery />
+      {/* End Of GALLERY */}
+
       {/* About Section */}
       <section
         id="about"
-        className="min-h-screen bg-gradient-to-tr from-yellow-50 to-amber-100 dark:from-indigo-900 dark:to-zinc-900 transition-colors duration-500 ease-in-out flex items-center justify-center px-4 py-16"
+        className="min-h-screen bg-gradient-to-tl from-amber-100 to-yellow-50 dark:from-zinc-900 dark:to-indigo-900 transition-colors duration-500 ease-in-out flex items-center justify-center px-4 py-16"
       >
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] m-5 xl:m-12 rounded-md max-w-7xl w-full bg-white/80 dark:bg-zinc-900/70 backdrop-blur-md shadow-xl overflow-hidden">
           {/* Left Content (Wider) */}
@@ -197,7 +228,7 @@ const Home = () => {
       {/* end of about section */}
 
       {/* Technologies Section */}
-      <section className="p-5 sm:p-5 text-xs sm:text:sm md:text-md xl:text-lg bg-white min-h-60 flex flex-col bg-gradient-to-br from-yellow-50 to-amber-100 dark:from-indigo-900 dark:to-zinc-900 transition-colors duration-500 transition-ease-in-out">
+      <section className="p-5 sm:p-5 text-xs sm:text:sm md:text-md xl:text-lg bg-white min-h-60 flex flex-col bg-gradient-to-bl from-amber-100 to-yellow-50 dark:from-zinc-900 dark:to-indigo-900 transition-colors duration-500 ease-in-out">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-12">
             Technologies I Use
@@ -224,7 +255,7 @@ const Home = () => {
 
       <section
         id="capstone"
-        className="py-20 bg-gradient-to-tr from-yellow-50 to-amber-100 dark:from-indigo-900 dark:to-zinc-900 text-gray-900 dark:text-white"
+        className="py-20 bg-gradient-to-tl from-yellow-50 to-amber-100 dark:from-zinc-900 dark:to-indigo-900 text-gray-900 dark:text-white transition-colors duration-500 ease-in-out"
       >
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold mb-8 text-center">
@@ -311,7 +342,7 @@ const Home = () => {
       {/* Back to Top Button */}
       <section
         id="contact"
-        className="mb-3 py-20 bg-gradient-to-tl from-amber-100 to-yellow-50 dark:from-zinc-900 dark:to-zinc-800"
+        className="mb-3 py-20 bg-gradient-to-tr from-amber-100 to-yellow-50 dark:from-indigo-900 dark:to-zinc-900"
       >
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left Column - Info */}
@@ -330,7 +361,7 @@ const Home = () => {
                 <h4 className="font-semibold text-gray-700 dark:text-gray-300">
                   Email
                 </h4>
-                <p className=" dark:text-blue-400">andyblack6016@gmail.com</p>
+                <p className=" dark:text-blue-400 underline">mikefranzaspa@gmail.com</p>
               </div>
               <div>
                 <h4 className="font-semibold text-gray-700 dark:text-gray-300">
@@ -344,39 +375,39 @@ const Home = () => {
           </div>
 
           {/* Right Column - Form */}
-          <div className="bg-white dark:bg-zinc-900 shadow-2xl rounded-2xl p-10 space-y-6">
-            <form onSubmit={handleSubmit} className="space-y-5">
+          <div className="dark:bg-white dark:text-black rounded-2xl p-10 space-y-6 shadow-xl bg-white">
+            <form onSubmit={handleSubmit} className="space-y-5 ">
               <div>
-                <label className="block text-sm text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm text-gray-700 mb-1">
                   Name
                 </label>
                 <input
                   name="name"
                   type="text"
                   placeholder="Your Name"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-200 text-gray-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm text-gray-700 mb-1">
                   Email
                 </label>
                 <input
                   type="email"
                   placeholder="youremail@example.com"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-200 text-gray-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block text-sm text-gray-700 mb-1">
                   Message
                 </label>
                 <textarea
                   rows="4"
                   placeholder="Your message..."
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-200 text-gray-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 ></textarea>
               </div>
 
