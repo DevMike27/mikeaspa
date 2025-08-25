@@ -57,6 +57,19 @@ export default function MyGallery() {
           ))}
         </div>
 
+        <div className="p-10">
+          <div>
+            <a
+              href="https://drive.google.com/drive/u/0/folders/1XDJqhnPH7QBIn_YFEaywAv2cX5GwLTHB"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cursor-pointer hover:underline bg-violet-500 p-4 rounded-lg text-white font-semibold hover:bg-blue-400 transition ease-out duration-200"
+            >
+              View More of my Designs
+            </a>
+          </div>
+        </div>
+
         {/* Modal */}
         {selectedImage && (
           <div
