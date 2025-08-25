@@ -117,18 +117,20 @@ const Home = () => {
 
   return (
     <div>
+      <Navbar />
+
       {/* Home Section */}
-      <section className="relative min-h-screen bg-gradient-to-br from-yellow-50 to-amber-100 dark:from-indigo-900 dark:to-zinc-900 transition-colors duration-500 transition-ease-in-out overflow-hidden">
-        <div className="absolute -top-20 -left-20 w-80 h-80 bg-pink-600 opacity-30 rounded-full filter blur-3xl dark:hidden animate-pulse"></div>
+      <section className="relative bg-gradient-to-br from-yellow-50 to-amber-100 dark:from-indigo-900 dark:to-zinc-900 transition-colors duration-500 transition-ease-in-out overflow-hidden">
         <div className="absolute top-40 -right-24 w-72 h-72 bg-blue-500 opacity-30 rounded-full filter blur-3xl dark:hidden animate-pulse delay-100"></div>
         <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-purple-200 opacity-20 rounded-full filter blur-2xl dark:hidden animate-pulse delay-200"></div>
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
 
-        <Navbar />
-
         {/* Hero Content */}
-        <div className="flex flex-col items-center justify-center min-h-screen px-4 text-center relative z-10">
-          <h1 className="font-bold text-gray-900 dark:text-white text-[25px] sm:text-[30px] md:text-[45px] lg:text-[96px] xl:text-[90px]">
+        <div className="flex flex-col items-center justify-center min-h-screen px-4 text-center relative z-10 pt-10">
+          <h1
+            className="font-bold text-gray-900 dark:text-white 
+               text-[42px] sm:text-[48px] md:text-[64px] lg:text-[90px] xl:text-[96px]"
+          >
             <Typewriter
               options={{
                 strings: [
@@ -144,25 +146,33 @@ const Home = () => {
             />
           </h1>
 
-          <span className="p-5 font-regular text-gray-700 dark:text-gray-300 text-[13px] sm:text-[17px] md:text-[14px] lg:text-[28px] xl:text-[18px]">
-            I am Graphic Designer and aspiring Front-End developer <br />
-            Philippines, I will help you create your website.
+          <span
+            className="mt-4 font-regular text-gray-700 dark:text-gray-300 
+                   text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] xl:text-[20px]"
+          >
+            I am a Graphic Designer and aspiring Front-End Developer <br />
+            from the Philippines, I will help you create your website.
           </span>
 
-          <div className="flex flex-wrap justify-center gap-4 mt-6">
+          <div className="flex flex-wrap justify-start gap-4 mt-6">
             <a
               href="#about"
-              className="bg-orange-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition-colors duration-300 text-sm sm:text-sm md:text-lg xl:text-md"
+              className="bg-orange-500 text-white px-6 py-3 rounded-md 
+                 hover:bg-blue-600 transition-colors duration-300 
+                 text-base sm:text-lg md:text-lg xl:text-md"
             >
               About Me
             </a>
             <a
               href="Mike_Aspa_IT_CV.pdf"
               target="blank"
-              className="flex items-center gap-2 bg-violet-600 text-white px-5 py-3 rounded-lg hover:bg-violet-700 transition-colors duration-500 text-sm sm:text-base md:text-lg"
+              className="flex items-center gap-2 bg-violet-600 text-white 
+                 px-5 py-3 rounded-lg hover:bg-violet-700 
+                 transition-colors duration-500 
+                 text-base sm:text-lg md:text-lg"
             >
               Download CV
-              <HardDriveDownload size={18} />
+              <HardDriveDownload size={20} />
             </a>
           </div>
         </div>
@@ -361,7 +371,9 @@ const Home = () => {
                 <h4 className="font-semibold text-gray-700 dark:text-gray-300">
                   Email
                 </h4>
-                <p className=" dark:text-blue-400 underline">mikefranzaspa@gmail.com</p>
+                <p className=" dark:text-blue-400 underline">
+                  mikefranzaspa@gmail.com
+                </p>
               </div>
               <div>
                 <h4 className="font-semibold text-gray-700 dark:text-gray-300">
@@ -378,9 +390,7 @@ const Home = () => {
           <div className="dark:bg-white dark:text-black rounded-2xl p-10 space-y-6 shadow-xl bg-white">
             <form onSubmit={handleSubmit} className="space-y-5 ">
               <div>
-                <label className="block text-sm text-gray-700 mb-1">
-                  Name
-                </label>
+                <label className="block text-sm text-gray-700 mb-1">Name</label>
                 <input
                   name="name"
                   type="text"

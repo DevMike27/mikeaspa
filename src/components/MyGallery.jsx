@@ -14,6 +14,12 @@ const figmaDesigns = [
     thumbnail: "/here-running.png",
     full: "/here-running.png",
   },
+  {
+    title: "Life Saver Medical Services",
+    description: "A clean design for medical services app.",
+    thumbnail: "/lsms.png",
+    full: "/lsms.png",
+  },
 ];
 
 export default function MyGallery() {
@@ -22,12 +28,12 @@ export default function MyGallery() {
     <div>
       <section className="p-6 md:p-12  bg-gradient-to-tr from-yellow-50 to-amber-100 dark:from-indigo-900 dark:to-zinc-900 dark:bg-gray-900 flex flex-col items-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-white">
-          Figma Designs
+          My Figma Designs
         </h2>
 
         {/* Cards Grid Centered */}
         {/* Grid container - center the cards */}
-        <div className="flex flex-wrap justify-center gap-6 max-w-5xl w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl w-full">
           {figmaDesigns.map((design, index) => (
             <div
               key={index}

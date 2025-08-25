@@ -39,10 +39,15 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="w-full transition-colors duration-500 transition-ease-in-out">
+    <nav className="w-full transition-colors duration-500 bg-gradient-to-tr from-amber-50 to-yellow-100 dark:from-indigo-900 dark:to-zinc-800 transition-ease-in-out">
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="flex logo justify-start font-bold text-black text-2xl dark:text-white"> 
-          <h1> {"</>"} MIKE</h1>
+        <div className="flex items-center justify-start">
+          <img
+            src="/mike-logo.png"
+            alt="Mike Logo"
+            className="h-10 w-auto m-5 object-contain"
+          />
         </div>
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6 text-sm md:text-base text-gray-800 dark:text-gray-100 font-medium">
@@ -93,16 +98,6 @@ export default function Navbar() {
             </label>
           </li>
         </ul>
-
-        {/* Mobile Hamburger */}
-        <div className="md:hidden">
-          <button
-            onClick={toggleMenu}
-            className="focus:outline-none text-gray-800 dark:text-gray-100"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
       </div>
 
       {/* Mobile Menu */}
